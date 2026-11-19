@@ -25,11 +25,11 @@ _for quickness, I have included the binary compiled on my mac mini m4 (so arm-ba
 ## Configuring
 
 slts requires in its working directory to have a config.lua file specifically.
-For example, for 10 workers a config.lua file would look like:
+For example, for 10 workers (essentially instances of the lua file provided) a config.lua file would look like:
 
 ```lua
 return {
-    worker_amount = 10
+    worker_count = 10
 }
 ```
 
@@ -37,7 +37,7 @@ For a change in port, we can do:
 
 ```lua
 return {
-    worker_amount = 10
+    worker_count = 10
     port = 9480
 }
 ```
