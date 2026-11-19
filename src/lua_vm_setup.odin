@@ -63,7 +63,6 @@ socket_send :: proc "c" (ls: ^lua.State) -> i32 {
 
 	length: c.size_t
 	data := lua.L_checkstring(ls, 2, &length)
-	fmt.println(data)
 
 	buffer := make([dynamic]u8, length)
 	defer delete(buffer)
