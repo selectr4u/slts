@@ -46,9 +46,9 @@ You must have a `config.lua` file, even if you want the default configuration, a
 
 ```lua
 return {
-	host         = "127.0.0.1",
-	port         = 8988,
-	worker_count = 2,
+    host         = "127.0.0.1",
+    port         = 8988,
+    worker_count = 2,
 }
 ```
 
