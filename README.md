@@ -6,21 +6,19 @@ slts (simple lua tcp server) is a _very basic_ way of serving a TCP server in lu
 
 You can build and run it, simply do
 
-````
-odin run src -- test.lua```
+```
+odin run src -- test.lua
+```
 
 or... the more better way is to build first, and get an executable is to do
 
-````
-
+```
 odin build src -out:out/slts
-
 ```
 
 obviously... make sure the `out` folder does exist.
 
 *for gracefulness, I have included the binary compiled on my mac mini m4 (so arm-based and macos) which is located in `out/`
-```
 
 # Usage
 
