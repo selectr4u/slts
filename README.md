@@ -18,7 +18,7 @@ odin build src -out:out/slts
 
 obviously... make sure the `out` folder does exist.
 
-*for gracefulness, I have included the binary compiled on my mac mini m4 (so arm-based and macos) which is located in `out/`
+_for quickness, I have included the binary compiled on my mac mini m4 (so arm-based and macos) which is located in `out/`_
 
 # Usage
 
