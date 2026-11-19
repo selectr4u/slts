@@ -118,6 +118,7 @@ setup_lua_vm :: proc(
 	err: string,
 ) {
 	lua.open_base(ls)
+	lua.L_openlibs(ls)
 
 	cstr := strings.clone_to_cstring(init_file, context.temp_allocator)
 	if (lua.L_dofile(ls, cstr) != i32(lua.OK)) {
