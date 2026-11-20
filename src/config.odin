@@ -7,6 +7,7 @@ import lua "vendor:lua/5.5"
 Config :: struct {
 	host:         string,
 	port:         u16,
+	timeout:      int,
 	worker_count: int,
 }
 
@@ -16,6 +17,7 @@ read_config :: proc(path: string) -> (cfg: Config, ok: bool, error: string) {
 		host         = "127.0.0.1",
 		port         = 8988,
 		worker_count = 2,
+		timeout      = -1,
 	}
 
 	// check existence first!
@@ -60,6 +62,13 @@ read_config :: proc(path: string) -> (cfg: Config, ok: bool, error: string) {
 	}
 
 	lua.pop(lua_state, 1)
+
+	// grab timeout
+	lua.getfield(lua_state, -1, "timeout")
+	if !lua.isnil(lua_state, -1) {
+		timeout := lua.tointeger(lua_state, -1)
+		cfg.timeout = int(timeout)
+	}
 
 	// grab worker count
 	lua.getfield(lua_state, -1, "worker_count")

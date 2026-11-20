@@ -86,6 +86,7 @@ main :: proc() {
 	server_thread, socket, sts_ok, sts_err := start_tcp_server(
 	cfg.host,
 	int(cfg.port),
+	cfg.timeout,
 	proc(client: net.TCP_Socket) {
 		// send to channel
 		wt := Worker_Task {

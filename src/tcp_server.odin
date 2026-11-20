@@ -4,6 +4,7 @@ import "core:fmt"
 import "core:net"
 import "core:os"
 import "core:thread"
+import "core:time"
 
 Tcp_Server_Handler :: proc(client: net.TCP_Socket)
 
@@ -26,6 +27,7 @@ tcp_server_loop :: proc(sock: net.TCP_Socket, handler: Tcp_Server_Handler) {
 start_tcp_server :: proc(
 	ip: string,
 	port: int,
+	timeout: int,
 	handler: Tcp_Server_Handler,
 ) -> (
 	t: ^thread.Thread,
@@ -41,6 +43,10 @@ start_tcp_server :: proc(
 	endpoint := net.Endpoint {
 		address = local_addr,
 		port    = port,
+	}
+
+	if (timeout > 0) {
+		net.set_option(socket, .Receive_Timeout, timeout * int(time.Second))
 	}
 
 	sock, err_listen := net.listen_tcp(endpoint)
