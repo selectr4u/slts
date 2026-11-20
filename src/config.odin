@@ -70,6 +70,8 @@ read_config :: proc(path: string) -> (cfg: Config, ok: bool, error: string) {
 		cfg.timeout = int(timeout)
 	}
 
+	lua.pop(lua_state, 1)
+
 	// grab worker count
 	lua.getfield(lua_state, -1, "worker_count")
 	if !lua.isnil(lua_state, -1) {
