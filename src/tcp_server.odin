@@ -46,7 +46,7 @@ start_tcp_server :: proc(
 	}
 
 	if (timeout > 0) {
-		net.set_option(socket, .Receive_Timeout, timeout * int(time.Second))
+		net.set_option(socket, .Receive_Timeout, time.Duration(timeout * int(time.Second)))
 	}
 
 	sock, err_listen := net.listen_tcp(endpoint)
